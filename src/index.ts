@@ -1,8 +1,9 @@
 import express, { Express } from "express";
 import dotenv from "dotenv";
+import bodyParser from "body-parser";
 import "reflect-metadata";
 import { dataSource } from "./app-data-source";
-import routes from "./routes";
+import { RegisterRoutes } from "./routes/routes";
 
 dotenv.config();
 
@@ -19,8 +20,16 @@ dataSource
 const app: Express = express();
 const port = process.env.PORT;
 
+// Use body parser to read sent json payloads
+app.use(
+  bodyParser.urlencoded({
+    extended: true,
+  })
+);
+app.use(bodyParser.json());
+
 // 挂载路由
-app.use(routes);
+RegisterRoutes(app);
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
