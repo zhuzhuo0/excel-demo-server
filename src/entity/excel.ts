@@ -7,7 +7,7 @@ export class Excel {
   id: number;
 
   @Column()
-  name: string;
+  version:number;
 
   @OneToMany(() => Version, (version) => version.excel)
   versions: Version[];

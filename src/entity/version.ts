@@ -3,7 +3,8 @@ import {
   Column,
   PrimaryGeneratedColumn,
   ManyToOne,
-  OneToMany,
+  ManyToMany,
+  JoinTable,
 } from "typeorm";
 import { Excel } from "./excel";
 import { Sheet } from "./sheet";
@@ -19,6 +20,7 @@ export class Version {
   @ManyToOne(() => Excel, (excel) => excel.versions)
   excel: Excel;
 
-  @OneToMany(() => Sheet, (sheet) => sheet.version)
+  @ManyToMany(() => Sheet)
+  @JoinTable()
   sheets: Sheet[];
 }

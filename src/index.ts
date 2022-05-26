@@ -2,7 +2,7 @@ import express, { Express } from "express";
 import dotenv from "dotenv";
 import "reflect-metadata";
 import { dataSource } from "./app-data-source";
-import demoRouter from "./routes";
+import routes from "./routes";
 
 dotenv.config();
 
@@ -20,7 +20,7 @@ const app: Express = express();
 const port = process.env.PORT;
 
 // 挂载路由
-app.use(demoRouter);
+app.use(routes);
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);

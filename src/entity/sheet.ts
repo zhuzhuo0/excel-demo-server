@@ -1,5 +1,4 @@
-import { Entity, Column, PrimaryGeneratedColumn, ManyToOne } from "typeorm";
-import { Version } from "./version";
+import { Entity, Column, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
 export class Sheet {
@@ -8,9 +7,6 @@ export class Sheet {
 
   @Column()
   name: string;
-
-  @ManyToOne(() => Version, (version) => version.sheets)
-  version: Version;
 
   @Column()
   data: string;
