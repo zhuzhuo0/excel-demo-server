@@ -1,0 +1,9 @@
+{
+  "watch": ["src"],
+  "exec": "ts-node src/index.ts",
+  "env": {
+    "NODE_ENV": "development"
+  },
+  "ignore": ["src/controller"],
+  "ext": "ts"
+}

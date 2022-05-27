@@ -1,9 +1,10 @@
-import express, { Express } from "express";
+import express, { Express, Request, Response } from "express";
 import dotenv from "dotenv";
 import bodyParser from "body-parser";
 import "reflect-metadata";
 import { dataSource } from "./app-data-source";
 import { RegisterRoutes } from "./routes/routes";
+import swaggerUi from "swagger-ui-express";
 
 dotenv.config();
 
@@ -27,6 +28,11 @@ app.use(
   })
 );
 app.use(bodyParser.json());
+
+// swagger ui
+app.use("/doc", swaggerUi.serve, async (req: Request, res: Response) => {
+  return res.send(swaggerUi.generateHTML(await import("../swagger.json")));
+});
 
 // 挂载路由
 RegisterRoutes(app);

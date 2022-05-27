@@ -1,4 +1,4 @@
-import { Controller,Get,Route} from "tsoa";
+import { Controller, Get, Route } from "tsoa";
 
 interface Excel {
   id: number;
@@ -6,17 +6,10 @@ interface Excel {
   version: number;
 }
 
-@Route('/excels')
+@Route("excels")
 export class RouteController extends Controller {
-
   @Get()
-  public getExcels(): Promise<Excel[]> {
-    let excels: Excel[] = [{ id: 1, name: "doc01", version: 1 }];
-    return Promise.resolve(excels);
-  }
-
-  @Get("{userId}")
-  public getExcel(id: number): Promise<Excel> {
-    return Promise.resolve({ id: 1, name: "doc01", version: 1 });
+  public async getExcels(): Promise<Excel[]> {
+    return [{ id: 1, name: "haha", version: 2 }];
   }
 }
