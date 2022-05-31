@@ -2,12 +2,12 @@ import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from "typeorm";
 import { Version } from "./version";
 
 @Entity()
-export class Excel {
+export class ExcelEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
   @Column()
-  version:number;
+  versionId:number;
 
   @OneToMany(() => Version, (version) => version.excel)
   versions: Version[];

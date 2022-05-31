@@ -6,8 +6,8 @@ import {
   ManyToMany,
   JoinTable,
 } from "typeorm";
-import { Excel } from "./excel";
-import { Sheet } from "./sheet";
+import { ExcelEntity } from "./excel";
+import { SheetEntity } from "./sheet";
 
 @Entity()
 export class Version {
@@ -17,10 +17,10 @@ export class Version {
   @Column()
   name: string;
 
-  @ManyToOne(() => Excel, (excel) => excel.versions)
-  excel: Excel;
+  @ManyToOne(() => ExcelEntity, (excel) => excel.versions)
+  excel: ExcelEntity;
 
-  @ManyToMany(() => Sheet)
+  @ManyToMany(() => SheetEntity)
   @JoinTable()
-  sheets: Sheet[];
+  sheets: SheetEntity[];
 }
