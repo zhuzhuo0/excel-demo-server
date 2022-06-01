@@ -1,14 +1,21 @@
-import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from "typeorm";
-import { Version } from "./version";
+import {
+  Entity,
+  OneToOne,
+  PrimaryGeneratedColumn,
+  OneToMany,
+  JoinColumn,
+} from "typeorm";
+import VersionDO from "./version";
 
 @Entity()
-export class ExcelEntity {
+export default class Excel {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column()
-  versionId:number;
+  @OneToOne(() => VersionDO)
+  @JoinColumn()
+  version: VersionDO;
 
-  @OneToMany(() => Version, (version) => version.excel)
-  versions: Version[];
+  @OneToMany(() => VersionDO, (version) => version.excel)
+  versions: VersionDO[];
 }

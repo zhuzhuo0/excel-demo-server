@@ -1,7 +1,7 @@
 import { Entity, Column, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
-export class SheetEntity {
+export default class Sheet {
   @PrimaryGeneratedColumn()
   id: number;
 

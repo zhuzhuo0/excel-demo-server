@@ -2,9 +2,9 @@ import { Controller, Get, Route } from "tsoa";
 import { ExcelService } from "../service/excel";
 
 interface ExcelDTO {
-  id: number | undefined;
-  name: string | undefined;
-  version: number | undefined;
+  id: number;
+  name: string;
+  version: number;
 }
 
 @Route("excels")

@@ -1,5 +1,5 @@
-import { ExcelBO } from "../module/excel";
-import { ExcelDAO } from "../module/excel/dao";
+import ExcelBO from "../module/excel/excel";
+import ExcelDAO from "../dao/excel";
 
 interface IExcelService {
   getExcels(): Promise<ExcelBO[]>;
@@ -7,8 +7,8 @@ interface IExcelService {
 
 export class ExcelService implements IExcelService {
   public async getExcels(): Promise<ExcelBO[]> {
-    const dao = new ExcelDAO();
-    let excels = await dao.getList();
-    return excels.map((i) => new ExcelBO(i));
+    const excelDao = new ExcelDAO();
+    let excels = await excelDao.getList();
+    return excels.map((i) => new ExcelBO(i, []));
   }
 }

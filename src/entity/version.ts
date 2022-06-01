@@ -6,21 +6,21 @@ import {
   ManyToMany,
   JoinTable,
 } from "typeorm";
-import { ExcelEntity } from "./excel";
-import { SheetEntity } from "./sheet";
+import ExcelDO from "./excel";
+import SheetDO from "./sheet";
 
 @Entity()
-export class Version {
+export default class Version {
   @PrimaryGeneratedColumn()
   id: number;
 
   @Column()
   name: string;
 
-  @ManyToOne(() => ExcelEntity, (excel) => excel.versions)
-  excel: ExcelEntity;
+  @ManyToOne(() => ExcelDO, (excel) => excel.versions)
+  excel: ExcelDO;
 
-  @ManyToMany(() => SheetEntity)
+  @ManyToMany(() => SheetDO)
   @JoinTable()
-  sheets: SheetEntity[];
+  sheets: SheetDO[];
 }
