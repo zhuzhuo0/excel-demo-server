@@ -14,11 +14,11 @@ class ExcelBO implements IExcelBO {
   name: string;
   id: number;
   versionId: number;
-  constructor(excelProps: ExcelDO, sheetsProps: SheetDO[]) {
+  constructor(excelProps: ExcelDO) {
     this.id = excelProps.id;
     this.name = excelProps.version.name;
     this.versionId = excelProps.version.id;
-    this.sheets = sheetsProps.map((i) => new SheetBO(i));
+    this.sheets = excelProps.version.sheets.map((i) => new SheetBO(i));
   }
 }
 
